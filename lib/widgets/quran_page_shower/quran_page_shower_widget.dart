@@ -12,9 +12,14 @@ import 'package:provider/provider.dart';
 
 class QuranPageShower extends StatelessWidget {
   const QuranPageShower(
-      {Key? key, required this.config, this.appBar, this.onPageChange})
+      {Key? key,
+      required this.config,
+      this.appBar,
+      this.onPageChange,
+      this.initialPage})
       : super(key: key);
   final QuranPageShowerConfig config;
+  final int? initialPage;
   final PreferredSizeWidget? appBar;
   final Function(int page)? onPageChange;
 
@@ -28,7 +33,7 @@ class QuranPageShower extends StatelessWidget {
               Provider.of<QuranPageShowerState>(context, listen: false);
 
           // Setup
-          state.init(context);
+          state.init(context, initialPage: initialPage);
           state.getQuranPage();
 
           return Consumer<QuranPageShowerState>(

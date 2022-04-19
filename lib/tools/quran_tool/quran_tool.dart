@@ -1,5 +1,6 @@
 import 'package:dzikr/core/utils/quran_utils.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs_model.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
 import 'package:dzikr/data/quran_data/quran_data_provider/quran_data_provider.dart';
 
@@ -20,6 +21,10 @@ class QuranTool {
 
   Future<QuranChapterModel> getQuranChapter() async {
     return await quranDataProvider.getSurahList();
+  }
+
+  Future<QuranJuzsModel> getQuranJuzs() async {
+    return await quranDataProvider.getJuzList();
   }
 
   static Future<Chapters> getQuranChapterByNum(int chapterNum) async {

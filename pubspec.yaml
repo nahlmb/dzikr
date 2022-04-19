@@ -2,6 +2,7 @@ name: dzikr
 description: Islamic feature tool collection package
 version: 0.0.1
 homepage:
+repository: https://github.com/nahlmb/dzikr
 
 environment:
   sdk: ">=2.15.1 <3.0.0"

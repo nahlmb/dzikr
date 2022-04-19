@@ -18,6 +18,10 @@ class QuranTool {
     return await quranDataProvider.getCompleteResultQuranData();
   }
 
+  Future<QuranChapterModel> getQuranChapter() async {
+    return await quranDataProvider.getSurahList();
+  }
+
   static Future<Chapters> getQuranChapterByNum(int chapterNum) async {
     return await QuranUtils.getSurahByNumber(chapterNum);
   }

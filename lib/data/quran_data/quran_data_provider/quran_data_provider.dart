@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dzikr/core/class/dzikr_provider_class.dart';
 import 'package:dzikr/core/config/dzikr_network_config.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs_model.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page_model.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
 import 'package:flutter/services.dart';
@@ -30,10 +31,15 @@ class QuranDataProvider extends DzikrProviderClass {
         await rootBundle.loadString('$assetPath/chapters.json')));
   }
 
+  Future<QuranJuzsModel> getJuzList() async {
+    return QuranJuzsModel.fromJson(
+        await jsonDecode(await rootBundle.loadString('$assetPath/juzs.json')));
+  }
+
   Future<List<QuranPageModel>> getCompleteQuranAsset() async {
     List<QuranPageModel> list = [];
 
-    for (var i = 1; i <= 100; i++) {
+    for (var i = 1; i <= 150; i++) {
       list.add(QuranPageModel.fromJson(
           await jsonDecode(await rootBundle.loadString('$assetPath/$i.json'))));
     }
@@ -158,7 +164,7 @@ class QuranDataProvider extends DzikrProviderClass {
     var join = temp.join();
     if (join.length >= 90) return 0.049;
     if (join.length >= 85) return 0.05;
-    if (join.length >= 80) return 0.051;
+    if (join.length >= 80) return 0.05;
     if (join.length >= 75) return 0.052;
     if (join.length >= 70) return 0.053;
     return 0.053;

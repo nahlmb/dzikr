@@ -12,15 +12,26 @@ class BookDataProvider extends DzikrProviderClass {
   final String assetPath;
 
   Future<List<Book>> getAllBooks() async {
+    List<Book> list = [];
+    list.addAll(await getDuaBook());
+    list.addAll(await getDzikrBook());
+    return list;
+  }
+
+  Future<List<Book>> getDzikrBook() async {
     var eveningDzikr = Book.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/evening-dzikr.json')));
     var morningDzikr = Book.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/morning-dzikr.json')));
+    return [eveningDzikr, morningDzikr];
+  }
+
+  Future<List<Book>> getDuaBook() async {
     var quranDua = Book.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/quran-dua.json')));
     var dailyDua = Book.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/daily-dua.json')));
 
-    return [eveningDzikr, morningDzikr, quranDua, dailyDua];
+    return [quranDua, dailyDua];
   }
 }

@@ -18,4 +18,16 @@ class BookTool {
     await bookTool._getPlainData();
     return bookTool;
   }
+
+  getAllBook() {
+    return _getPlainData();
+  }
+
+  Future<List<Book>> getDzikrBook() async {
+    return await bookDataProvider.getDzikrBook();
+  }
+
+  Future<List<Book>> getDuaBook() async {
+    return await bookDataProvider.getDuaBook();
+  }
 }

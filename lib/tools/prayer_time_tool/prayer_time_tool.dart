@@ -40,15 +40,15 @@ class PrayerTimeTool {
   String _long = "106.82706696674836";
   String _place = "Jakarta";
 
-  PrayerResponseModel prayer = PrayerResponseModel(
-      monthlySchedule: PrayerTimeDataModel(),
-      todaySchedule: PrayerDailyModel(
+  PrayerTime prayer = PrayerTime(
+      monthlySchedule: MonthlyPrayer(),
+      todaySchedule: DailyPrayer(
           fajr: '00:00',
           dzhur: '00:00',
           ashar: '00:00',
           maghrib: '00:00',
           isya: '00:00',
-          closestPrayerTime: PrayerClosestModel(
+          closestPrayer: ClosestPrayer(
               closestPrayer: 'Prayer',
               closestTime: '00:00',
               durationToClosestPrayer: const Duration(seconds: 0))),
@@ -96,14 +96,14 @@ class PrayerTimeTool {
         "-";
   }
 
-  Future<PrayerResponseModel> _getPrayerTime() async {
+  Future<PrayerTime> _getPrayerTime() async {
     var monthlySchedule =
         await _prayerTimeDataProvider.getMonthlyPrayerTime(_lat, _long);
     var todaySchedule = _prayerTimeDataProvider.getTodayPrayerTime(
         monthlySchedule: monthlySchedule);
     var detailedSchedule =
         _prayerTimeDataProvider.findClosestPrayerTime(todaySchedule);
-    prayer = PrayerResponseModel(
+    prayer = PrayerTime(
         monthlySchedule: monthlySchedule,
         todaySchedule: detailedSchedule,
         placeLat: _lat,
@@ -112,14 +112,14 @@ class PrayerTimeTool {
     return prayer;
   }
 
-  static PrayerResponseModel findClosestPrayerTime(PrayerResponseModel prayer) {
+  static PrayerTime findClosestPrayerTime(PrayerTime prayer) {
     PrayerTimeDataProvider provider = PrayerTimeDataProvider();
     DzikrErrorConfig.doTry(() {
       var todaySchedule =
           provider.getTodayPrayerTime(monthlySchedule: prayer.monthlySchedule);
       var detailedSchedule = provider.findClosestPrayerTime(todaySchedule);
 
-      prayer = PrayerResponseModel(
+      prayer = PrayerTime(
           monthlySchedule: prayer.monthlySchedule,
           todaySchedule: detailedSchedule,
           placeLat: prayer.placeLat,

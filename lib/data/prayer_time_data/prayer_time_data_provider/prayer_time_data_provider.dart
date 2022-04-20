@@ -12,18 +12,17 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
             networkConfig:
                 DzikrNetworkConfig(baseUrl: "http://api.aladhan.com/v1"));
 
-  Future<PrayerTimeDataModel> getMonthlyPrayerTime(
-      String lat, String long) async {
+  Future<MonthlyPrayer> getMonthlyPrayerTime(String lat, String long) async {
     var date = DateTime.now();
     var month = DateFormat('M').format(date);
     var year = DateFormat('yyyy').format(date);
     var response = await networkConfig.doGet(
         '/calendar?latitude=$lat&longitude=$long&method=4&month=$month&year=$year');
 
-    return PrayerTimeDataModel.fromJson(response);
+    return MonthlyPrayer.fromJson(response);
   }
 
-  Data getTodayPrayerTime({required PrayerTimeDataModel monthlySchedule}) {
+  Data getTodayPrayerTime({required MonthlyPrayer monthlySchedule}) {
     var date = DateTime.now();
     String nowDate = DateFormat('dd-MM-yyyy').format(date);
     if (monthlySchedule.data == null) {
@@ -36,7 +35,7 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
     return todayData;
   }
 
-  PrayerDailyModel findClosestPrayerTime(Data todayData) {
+  DailyPrayer findClosestPrayerTime(Data todayData) {
     // Find closest prayer time
     var date = DateTime.now();
     var format = DateFormat("HH:mm");
@@ -45,10 +44,10 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
     var todayTimings = todayData.timings!;
 
     //change all prayer time to milliseconds
-    int fajr = format
-        .parse(todayTimings.fajr!.substring(0, 5))
-        .millisecondsSinceEpoch
-        .abs();
+    // int fajr = format
+    //     .parse(todayTimings.fajr!.substring(0, 5))
+    //     .millisecondsSinceEpoch
+    //     .abs();
     int dhuhr = format
         .parse(todayTimings.dhuhr!.substring(0, 5))
         .millisecondsSinceEpoch
@@ -99,13 +98,13 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
     var closestDateDiffrance = closestDateExac.difference(
         DateTime.utc(date.year, date.month, date.day, date.hour, date.minute));
 
-    return PrayerDailyModel(
+    return DailyPrayer(
         fajr: todayTimings.fajr!,
         dzhur: todayTimings.dhuhr!,
         ashar: todayTimings.asr!,
         maghrib: todayTimings.maghrib!,
         isya: todayTimings.isha!,
-        closestPrayerTime: PrayerClosestModel(
+        closestPrayer: ClosestPrayer(
             closestPrayer: closestPrayer,
             closestTime: closestPrayerTime,
             durationToClosestPrayer: closestDateDiffrance));

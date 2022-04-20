@@ -1,25 +1,25 @@
-class PrayerTimeDataModel {
+class MonthlyPrayer {
   int? code;
   String? status;
   List<Data>? data;
 
-  PrayerTimeDataModel({this.code, this.status, this.data});
+  MonthlyPrayer({this.code, this.status, this.data});
 
-  PrayerTimeDataModel.fromJson(Map<String, dynamic> json) {
+  MonthlyPrayer.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['code'] = code;
+    data['status'] = status;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -36,21 +36,21 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     timings =
-        json['timings'] != null ? new Timings.fromJson(json['timings']) : null;
-    date = json['date'] != null ? new Date.fromJson(json['date']) : null;
-    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
+        json['timings'] != null ? Timings.fromJson(json['timings']) : null;
+    date = json['date'] != null ? Date.fromJson(json['date']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.timings != null) {
-      data['timings'] = this.timings!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (timings != null) {
+      data['timings'] = timings!.toJson();
     }
-    if (this.date != null) {
-      data['date'] = this.date!.toJson();
+    if (date != null) {
+      data['date'] = date!.toJson();
     }
-    if (this.meta != null) {
-      data['meta'] = this.meta!.toJson();
+    if (meta != null) {
+      data['meta'] = meta!.toJson();
     }
     return data;
   }
@@ -91,16 +91,16 @@ class Timings {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Fajr'] = this.fajr;
-    data['Sunrise'] = this.sunrise;
-    data['Dhuhr'] = this.dhuhr;
-    data['Asr'] = this.asr;
-    data['Sunset'] = this.sunset;
-    data['Maghrib'] = this.maghrib;
-    data['Isha'] = this.isha;
-    data['Imsak'] = this.imsak;
-    data['Midnight'] = this.midnight;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Fajr'] = fajr;
+    data['Sunrise'] = sunrise;
+    data['Dhuhr'] = dhuhr;
+    data['Asr'] = asr;
+    data['Sunset'] = sunset;
+    data['Maghrib'] = maghrib;
+    data['Isha'] = isha;
+    data['Imsak'] = imsak;
+    data['Midnight'] = midnight;
     return data;
   }
 }
@@ -111,26 +111,26 @@ class Date {
   Gregorian? gregorian;
   Hijri? hijri;
 
-  Date({this.readable, this.timestamp, this.gregorian, this.hijri});
+  Date({readable, timestamp, gregorian, hijri});
 
   Date.fromJson(Map<String, dynamic> json) {
     readable = json['readable'];
     timestamp = json['timestamp'];
     gregorian = json['gregorian'] != null
-        ? new Gregorian.fromJson(json['gregorian'])
+        ? Gregorian.fromJson(json['gregorian'])
         : null;
-    hijri = json['hijri'] != null ? new Hijri.fromJson(json['hijri']) : null;
+    hijri = json['hijri'] != null ? Hijri.fromJson(json['hijri']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['readable'] = this.readable;
-    data['timestamp'] = this.timestamp;
-    if (this.gregorian != null) {
-      data['gregorian'] = this.gregorian!.toJson();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['readable'] = readable;
+    data['timestamp'] = timestamp;
+    if (gregorian != null) {
+      data['gregorian'] = gregorian!.toJson();
     }
-    if (this.hijri != null) {
-      data['hijri'] = this.hijri!.toJson();
+    if (hijri != null) {
+      data['hijri'] = hijri!.toJson();
     }
     return data;
   }
@@ -159,28 +159,28 @@ class Gregorian {
     format = json['format'];
     day = json['day'];
     weekday =
-        json['weekday'] != null ? new Weekday.fromJson(json['weekday']) : null;
-    month = json['month'] != null ? new Month.fromJson(json['month']) : null;
+        json['weekday'] != null ? Weekday.fromJson(json['weekday']) : null;
+    month = json['month'] != null ? Month.fromJson(json['month']) : null;
     year = json['year'];
     designation = json['designation'] != null
-        ? new Designation.fromJson(json['designation'])
+        ? Designation.fromJson(json['designation'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['date'] = this.date;
-    data['format'] = this.format;
-    data['day'] = this.day;
-    if (this.weekday != null) {
-      data['weekday'] = this.weekday!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['date'] = date;
+    data['format'] = format;
+    data['day'] = day;
+    if (weekday != null) {
+      data['weekday'] = weekday!.toJson();
     }
-    if (this.month != null) {
-      data['month'] = this.month!.toJson();
+    if (month != null) {
+      data['month'] = month!.toJson();
     }
-    data['year'] = this.year;
-    if (this.designation != null) {
-      data['designation'] = this.designation!.toJson();
+    data['year'] = year;
+    if (designation != null) {
+      data['designation'] = designation!.toJson();
     }
     return data;
   }
@@ -196,8 +196,8 @@ class Weekday {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['en'] = this.en;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['en'] = en;
     return data;
   }
 }
@@ -214,9 +214,9 @@ class Month {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['number'] = this.number;
-    data['en'] = this.en;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['number'] = number;
+    data['en'] = en;
     return data;
   }
 }
@@ -233,9 +233,9 @@ class Designation {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['abbreviated'] = this.abbreviated;
-    data['expanded'] = this.expanded;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['abbreviated'] = abbreviated;
+    data['expanded'] = expanded;
     return data;
   }
 }
@@ -264,34 +264,32 @@ class Hijri {
     date = json['date'];
     format = json['format'];
     day = json['day'];
-    weekday = json['weekday'] != null
-        ? new HijriWeekday.fromJson(json['weekday'])
-        : null;
-    month =
-        json['month'] != null ? new HijriMonth.fromJson(json['month']) : null;
+    weekday =
+        json['weekday'] != null ? HijriWeekday.fromJson(json['weekday']) : null;
+    month = json['month'] != null ? HijriMonth.fromJson(json['month']) : null;
     year = json['year'];
     designation = json['designation'] != null
-        ? new Designation.fromJson(json['designation'])
+        ? Designation.fromJson(json['designation'])
         : null;
     holidays = json['holidays'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['date'] = this.date;
-    data['format'] = this.format;
-    data['day'] = this.day;
-    if (this.weekday != null) {
-      data['weekday'] = this.weekday!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['date'] = date;
+    data['format'] = format;
+    data['day'] = day;
+    if (weekday != null) {
+      data['weekday'] = weekday!.toJson();
     }
-    if (this.month != null) {
-      data['month'] = this.month!.toJson();
+    if (month != null) {
+      data['month'] = month!.toJson();
     }
-    data['year'] = this.year;
-    if (this.designation != null) {
-      data['designation'] = this.designation!.toJson();
+    data['year'] = year;
+    if (designation != null) {
+      data['designation'] = designation!.toJson();
     }
-    data['holidays'] = this.holidays;
+    data['holidays'] = holidays;
     return data;
   }
 }
@@ -300,7 +298,7 @@ class HijriWeekday {
   String? en;
   String? ar;
 
-  HijriWeekday({this.en, this.ar});
+  HijriWeekday({en, ar});
 
   HijriWeekday.fromJson(Map<String, dynamic> json) {
     en = json['en'];
@@ -308,9 +306,9 @@ class HijriWeekday {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['en'] = this.en;
-    data['ar'] = this.ar;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['en'] = en;
+    data['ar'] = ar;
     return data;
   }
 }
@@ -320,7 +318,7 @@ class HijriMonth {
   String? en;
   String? ar;
 
-  HijriMonth({this.number, this.en, this.ar});
+  HijriMonth({number, en, ar});
 
   HijriMonth.fromJson(Map<String, dynamic> json) {
     number = json['number'];
@@ -329,10 +327,10 @@ class HijriMonth {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['number'] = this.number;
-    data['en'] = this.en;
-    data['ar'] = this.ar;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['number'] = number;
+    data['en'] = en;
+    data['ar'] = ar;
     return data;
   }
 }
@@ -360,24 +358,23 @@ class Meta {
     latitude = json['latitude'];
     longitude = json['longitude'];
     timezone = json['timezone'];
-    method =
-        json['method'] != null ? new Method.fromJson(json['method']) : null;
+    method = json['method'] != null ? Method.fromJson(json['method']) : null;
     latitudeAdjustmentMethod = json['latitudeAdjustmentMethod'];
     midnightMode = json['midnightMode'];
     school = json['school'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
-    data['timezone'] = this.timezone;
-    if (this.method != null) {
-      data['method'] = this.method!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['latitude'] = latitude;
+    data['longitude'] = longitude;
+    data['timezone'] = timezone;
+    if (method != null) {
+      data['method'] = method!.toJson();
     }
-    data['latitudeAdjustmentMethod'] = this.latitudeAdjustmentMethod;
-    data['midnightMode'] = this.midnightMode;
-    data['school'] = this.school;
+    data['latitudeAdjustmentMethod'] = latitudeAdjustmentMethod;
+    data['midnightMode'] = midnightMode;
+    data['school'] = school;
 
     return data;
   }
@@ -394,22 +391,20 @@ class Method {
   Method.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    params =
-        json['params'] != null ? new Params.fromJson(json['params']) : null;
-    location = json['location'] != null
-        ? new Location.fromJson(json['location'])
-        : null;
+    params = json['params'] != null ? Params.fromJson(json['params']) : null;
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    if (this.params != null) {
-      data['params'] = this.params!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    if (params != null) {
+      data['params'] = params!.toJson();
     }
-    if (this.location != null) {
-      data['location'] = this.location!.toJson();
+    if (location != null) {
+      data['location'] = location!.toJson();
     }
     return data;
   }
@@ -427,9 +422,9 @@ class Params {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Fajr'] = this.fajr;
-    data['Isha'] = this.isha;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Fajr'] = fajr;
+    data['Isha'] = isha;
     return data;
   }
 }
@@ -446,9 +441,9 @@ class Location {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['latitude'] = latitude;
+    data['longitude'] = longitude;
     return data;
   }
 }

@@ -1,24 +1,24 @@
 import 'package:dzikr/core/config/size_config.dart';
 import 'package:dzikr/core/utils/size_utils.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_shower_config_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page_response.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page_reader_config.dart';
 import 'package:dzikr/tools/quran_tool/quran_tool.dart';
 import 'package:dzikr/widgets/minus_divider_widget/minus_divider_widget.dart';
-import 'package:dzikr/widgets/quran_page_shower/quran_page_shower_state.dart';
+import 'package:dzikr/widgets/quran_page_shower/quran_page_reader_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class QuranPageShower extends StatelessWidget {
-  const QuranPageShower(
+class QuranPageReader extends StatelessWidget {
+  const QuranPageReader(
       {Key? key,
       required this.config,
       this.appBar,
       this.onPageChange,
       this.initialPage})
       : super(key: key);
-  final QuranPageShowerConfig config;
+  final QuranPageReaderConfig config;
   final int? initialPage;
   final PreferredSizeWidget? appBar;
   final Function(int page)? onPageChange;
@@ -138,7 +138,7 @@ class QuranPageWidget extends StatelessWidget {
   }) : super(key: key);
 
   final QuranPage page;
-  final QuranPageShowerConfig config;
+  final QuranPageReaderConfig config;
 
   @override
   Widget build(BuildContext context) {
@@ -263,7 +263,7 @@ class BasmalahWord extends StatelessWidget {
   }) : super(key: key);
 
   final double fontSize;
-  final QuranPageShowerConfig config;
+  final QuranPageReaderConfig config;
 
   @override
   Widget build(BuildContext context) {
@@ -294,7 +294,7 @@ class BeginingSurahCard extends StatelessWidget {
   }) : super(key: key);
 
   final QuranLineResultModel line;
-  final QuranPageShowerConfig config;
+  final QuranPageReaderConfig config;
 
   @override
   Widget build(BuildContext context) {

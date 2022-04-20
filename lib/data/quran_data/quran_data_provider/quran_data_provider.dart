@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:dzikr/core/class/dzikr_provider_class.dart';
 import 'package:dzikr/core/config/dzikr_network_config.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page_response.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,8 +26,8 @@ class QuranDataProvider extends DzikrProviderClass {
     prefs.setInt(_lastOpenedPageIndexKey, page);
   }
 
-  Future<QuranChapter> getSurahList() async {
-    return QuranChapter.fromJson(await jsonDecode(
+  Future<QuranChapters> getSurahList() async {
+    return QuranChapters.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/chapters.json')));
   }
 

@@ -1,9 +1,9 @@
 import 'package:dzikr/core/config/dzikr_error_config.dart';
 import 'package:dzikr/core/utils/location_utils.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_closest_model.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_daily_model.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_response_model.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_time_data_model.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/closest_prayer.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/daily_prayer.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_time.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/monthly_prayer.dart';
 import 'package:dzikr/data/prayer_time_data/prayer_time_data_provider/prayer_time_data_provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;

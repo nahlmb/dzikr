@@ -1,6 +1,6 @@
 import 'package:dzikr/core/config/size_config.dart';
 import 'package:dzikr/core/utils/theme_utils.dart';
-import 'package:dzikr/data/book_data/book_data_model/book_data_model.dart';
+import 'package:dzikr/data/book_data/book_data_model/book.dart';
 import 'package:dzikr/data/book_data/book_data_model/book_type.dart';
 import 'package:dzikr/widgets/dzikr_reader_widget/dzikr_reader_state.dart';
 import 'package:dzikr/widgets/minus_divider_widget/minus_divider_widget.dart';

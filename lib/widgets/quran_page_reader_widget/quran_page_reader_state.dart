@@ -1,5 +1,5 @@
 import 'package:dzikr/core/class/dzikr_state_class.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
 import 'package:dzikr/tools/quran_tool/quran_tool.dart';
 import 'package:flutter/material.dart';
 

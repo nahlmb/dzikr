@@ -1,4 +1,4 @@
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page_response.dart';
 
 class QuranPage {
   QuranPage(

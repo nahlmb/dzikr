@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class QuranPageShowerConfig {
-  QuranPageShowerConfig(
+class QuranPageReaderConfig {
+  QuranPageReaderConfig(
       {this.isUsingBottomIndicator = false,
       this.pageMode = QuranPageMode.page,
       this.primaryColor = const Color(0xffF2F2F2),

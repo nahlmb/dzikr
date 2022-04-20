@@ -1,9 +1,9 @@
-class QuranChapter {
+class QuranChapters {
   List<Chapters>? chapters;
 
-  QuranChapter({this.chapters});
+  QuranChapters({this.chapters});
 
-  QuranChapter.fromJson(Map<String, dynamic> json) {
+  QuranChapters.fromJson(Map<String, dynamic> json) {
     if (json['chapters'] != null) {
       chapters = <Chapters>[];
       json['chapters'].forEach((v) {

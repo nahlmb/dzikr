@@ -1,7 +1,7 @@
 import 'package:dzikr/core/utils/quran_utils.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs_model.dart';
-import 'package:dzikr/data/quran_data/quran_data_model/quran_page_result_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_juzs.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
 import 'package:dzikr/data/quran_data/quran_data_provider/quran_data_provider.dart';
 
 class QuranTool {
@@ -19,7 +19,7 @@ class QuranTool {
     return await quranDataProvider.getCompleteResultQuranData();
   }
 
-  Future<QuranChapter> getQuranChapter() async {
+  Future<QuranChapters> getQuranChapter() async {
     return await quranDataProvider.getSurahList();
   }
 

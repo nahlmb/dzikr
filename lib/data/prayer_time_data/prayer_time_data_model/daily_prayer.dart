@@ -1,4 +1,4 @@
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_closest_model.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/closest_prayer.dart';
 
 class DailyPrayer {
   DailyPrayer(

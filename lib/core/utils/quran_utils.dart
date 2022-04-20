@@ -1,4 +1,4 @@
-import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter_model.dart';
+import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter.dart';
 import 'package:dzikr/data/quran_data/quran_data_provider/quran_data_provider.dart';
 
 class QuranUtils {

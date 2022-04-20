@@ -1,4 +1,4 @@
-import 'package:dzikr/data/book_data/book_data_model/book_data_model.dart';
+import 'package:dzikr/data/book_data/book_data_model/book.dart';
 import 'package:dzikr/data/book_data/book_data_provider/book_data_provider.dart';
 
 class BookTool {

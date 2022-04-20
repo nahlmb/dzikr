@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dzikr/core/class/dzikr_provider_class.dart';
 import 'package:dzikr/core/config/dzikr_network_config.dart';
-import 'package:dzikr/data/book_data/book_data_model/book_data_model.dart';
+import 'package:dzikr/data/book_data/book_data_model/book.dart';
 import 'package:flutter/services.dart';
 
 class BookDataProvider extends DzikrProviderClass {

@@ -1,9 +1,9 @@
 import 'package:dzikr/core/class/dzikr_provider_class.dart';
 import 'package:dzikr/core/config/dzikr_error_config.dart';
 import 'package:dzikr/core/config/dzikr_network_config.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_closest_model.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_daily_model.dart';
-import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/prayer_time_data_model.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/closest_prayer.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/daily_prayer.dart';
+import 'package:dzikr/data/prayer_time_data/prayer_time_data_model/monthly_prayer.dart';
 import 'package:intl/intl.dart';
 
 class PrayerTimeDataProvider extends DzikrProviderClass {

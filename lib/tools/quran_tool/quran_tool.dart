@@ -15,15 +15,15 @@ class QuranTool {
     return quranTool;
   }
 
-  Future<List<QuranPageResultModel>> getQuranPages() async {
+  Future<List<QuranPage>> getQuranPages() async {
     return await quranDataProvider.getCompleteResultQuranData();
   }
 
-  Future<QuranChapterModel> getQuranChapter() async {
+  Future<QuranChapter> getQuranChapter() async {
     return await quranDataProvider.getSurahList();
   }
 
-  Future<QuranJuzsModel> getQuranJuzs() async {
+  Future<QuranJuzs> getQuranJuzs() async {
     return await quranDataProvider.getJuzList();
   }
 

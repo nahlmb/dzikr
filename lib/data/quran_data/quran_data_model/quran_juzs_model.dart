@@ -1,21 +1,21 @@
-class QuranJuzsModel {
+class QuranJuzs {
   List<Juzs>? juzs;
 
-  QuranJuzsModel({this.juzs});
+  QuranJuzs({this.juzs});
 
-  QuranJuzsModel.fromJson(Map<String, dynamic> json) {
+  QuranJuzs.fromJson(Map<String, dynamic> json) {
     if (json['juzs'] != null) {
       juzs = <Juzs>[];
       json['juzs'].forEach((v) {
-        juzs!.add(new Juzs.fromJson(v));
+        juzs!.add(Juzs.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.juzs != null) {
-      data['juzs'] = this.juzs!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (juzs != null) {
+      data['juzs'] = juzs!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -41,7 +41,7 @@ class Juzs {
     id = json['id'];
     juzNumber = json['juz_number'];
     verseMapping = json['verse_mapping'] != null
-        ? new VerseMapping.fromJson(json['verse_mapping'])
+        ? VerseMapping.fromJson(json['verse_mapping'])
         : null;
     firstVerseId = json['first_verse_id'];
     lastVerseId = json['last_verse_id'];
@@ -49,15 +49,15 @@ class Juzs {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['juz_number'] = this.juzNumber;
-    if (this.verseMapping != null) {
-      data['verse_mapping'] = this.verseMapping!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['juz_number'] = juzNumber;
+    if (verseMapping != null) {
+      data['verse_mapping'] = verseMapping!.toJson();
     }
-    data['first_verse_id'] = this.firstVerseId;
-    data['last_verse_id'] = this.lastVerseId;
-    data['verses_count'] = this.versesCount;
+    data['first_verse_id'] = firstVerseId;
+    data['last_verse_id'] = lastVerseId;
+    data['verses_count'] = versesCount;
     return data;
   }
 }
@@ -412,121 +412,121 @@ class VerseMapping {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['1'] = this.s1;
-    data['2'] = this.s2;
-    data['3'] = this.s3;
-    data['4'] = this.s4;
-    data['5'] = this.s5;
-    data['6'] = this.s6;
-    data['7'] = this.s7;
-    data['8'] = this.s8;
-    data['9'] = this.s9;
-    data['10'] = this.s10;
-    data['11'] = this.s11;
-    data['12'] = this.s12;
-    data['13'] = this.s13;
-    data['14'] = this.s14;
-    data['15'] = this.s15;
-    data['16'] = this.s16;
-    data['17'] = this.s17;
-    data['18'] = this.s18;
-    data['19'] = this.s19;
-    data['20'] = this.s20;
-    data['21'] = this.s21;
-    data['22'] = this.s22;
-    data['23'] = this.s23;
-    data['24'] = this.s24;
-    data['25'] = this.s25;
-    data['26'] = this.s26;
-    data['27'] = this.s27;
-    data['28'] = this.s28;
-    data['29'] = this.s29;
-    data['30'] = this.s30;
-    data['31'] = this.s31;
-    data['32'] = this.s32;
-    data['33'] = this.s33;
-    data['34'] = this.s34;
-    data['35'] = this.s35;
-    data['36'] = this.s36;
-    data['37'] = this.s37;
-    data['38'] = this.s38;
-    data['39'] = this.s39;
-    data['40'] = this.s40;
-    data['41'] = this.s41;
-    data['42'] = this.s42;
-    data['43'] = this.s43;
-    data['44'] = this.s44;
-    data['45'] = this.s45;
-    data['46'] = this.s46;
-    data['47'] = this.s47;
-    data['48'] = this.s48;
-    data['49'] = this.s49;
-    data['50'] = this.s50;
-    data['51'] = this.s51;
-    data['52'] = this.s52;
-    data['53'] = this.s53;
-    data['54'] = this.s54;
-    data['55'] = this.s55;
-    data['56'] = this.s56;
-    data['57'] = this.s57;
-    data['58'] = this.s58;
-    data['59'] = this.s59;
-    data['60'] = this.s60;
-    data['61'] = this.s61;
-    data['62'] = this.s62;
-    data['63'] = this.s63;
-    data['64'] = this.s64;
-    data['65'] = this.s65;
-    data['66'] = this.s66;
-    data['67'] = this.s67;
-    data['68'] = this.s68;
-    data['69'] = this.s69;
-    data['70'] = this.s70;
-    data['71'] = this.s71;
-    data['72'] = this.s72;
-    data['73'] = this.s73;
-    data['74'] = this.s74;
-    data['75'] = this.s75;
-    data['76'] = this.s76;
-    data['77'] = this.s77;
-    data['78'] = this.s78;
-    data['79'] = this.s79;
-    data['80'] = this.s80;
-    data['81'] = this.s81;
-    data['82'] = this.s82;
-    data['83'] = this.s83;
-    data['84'] = this.s84;
-    data['85'] = this.s85;
-    data['86'] = this.s86;
-    data['87'] = this.s87;
-    data['88'] = this.s88;
-    data['89'] = this.s89;
-    data['90'] = this.s90;
-    data['91'] = this.s91;
-    data['92'] = this.s92;
-    data['93'] = this.s93;
-    data['94'] = this.s94;
-    data['95'] = this.s95;
-    data['96'] = this.s96;
-    data['97'] = this.s97;
-    data['98'] = this.s98;
-    data['99'] = this.s99;
-    data['100'] = this.s100;
-    data['101'] = this.s101;
-    data['102'] = this.s102;
-    data['103'] = this.s103;
-    data['104'] = this.s104;
-    data['105'] = this.s105;
-    data['106'] = this.s106;
-    data['107'] = this.s107;
-    data['108'] = this.s108;
-    data['109'] = this.s109;
-    data['110'] = this.s110;
-    data['111'] = this.s111;
-    data['112'] = this.s112;
-    data['113'] = this.s113;
-    data['114'] = this.s114;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['1'] = s1;
+    data['2'] = s2;
+    data['3'] = s3;
+    data['4'] = s4;
+    data['5'] = s5;
+    data['6'] = s6;
+    data['7'] = s7;
+    data['8'] = s8;
+    data['9'] = s9;
+    data['10'] = s10;
+    data['11'] = s11;
+    data['12'] = s12;
+    data['13'] = s13;
+    data['14'] = s14;
+    data['15'] = s15;
+    data['16'] = s16;
+    data['17'] = s17;
+    data['18'] = s18;
+    data['19'] = s19;
+    data['20'] = s20;
+    data['21'] = s21;
+    data['22'] = s22;
+    data['23'] = s23;
+    data['24'] = s24;
+    data['25'] = s25;
+    data['26'] = s26;
+    data['27'] = s27;
+    data['28'] = s28;
+    data['29'] = s29;
+    data['30'] = s30;
+    data['31'] = s31;
+    data['32'] = s32;
+    data['33'] = s33;
+    data['34'] = s34;
+    data['35'] = s35;
+    data['36'] = s36;
+    data['37'] = s37;
+    data['38'] = s38;
+    data['39'] = s39;
+    data['40'] = s40;
+    data['41'] = s41;
+    data['42'] = s42;
+    data['43'] = s43;
+    data['44'] = s44;
+    data['45'] = s45;
+    data['46'] = s46;
+    data['47'] = s47;
+    data['48'] = s48;
+    data['49'] = s49;
+    data['50'] = s50;
+    data['51'] = s51;
+    data['52'] = s52;
+    data['53'] = s53;
+    data['54'] = s54;
+    data['55'] = s55;
+    data['56'] = s56;
+    data['57'] = s57;
+    data['58'] = s58;
+    data['59'] = s59;
+    data['60'] = s60;
+    data['61'] = s61;
+    data['62'] = s62;
+    data['63'] = s63;
+    data['64'] = s64;
+    data['65'] = s65;
+    data['66'] = s66;
+    data['67'] = s67;
+    data['68'] = s68;
+    data['69'] = s69;
+    data['70'] = s70;
+    data['71'] = s71;
+    data['72'] = s72;
+    data['73'] = s73;
+    data['74'] = s74;
+    data['75'] = s75;
+    data['76'] = s76;
+    data['77'] = s77;
+    data['78'] = s78;
+    data['79'] = s79;
+    data['80'] = s80;
+    data['81'] = s81;
+    data['82'] = s82;
+    data['83'] = s83;
+    data['84'] = s84;
+    data['85'] = s85;
+    data['86'] = s86;
+    data['87'] = s87;
+    data['88'] = s88;
+    data['89'] = s89;
+    data['90'] = s90;
+    data['91'] = s91;
+    data['92'] = s92;
+    data['93'] = s93;
+    data['94'] = s94;
+    data['95'] = s95;
+    data['96'] = s96;
+    data['97'] = s97;
+    data['98'] = s98;
+    data['99'] = s99;
+    data['100'] = s100;
+    data['101'] = s101;
+    data['102'] = s102;
+    data['103'] = s103;
+    data['104'] = s104;
+    data['105'] = s105;
+    data['106'] = s106;
+    data['107'] = s107;
+    data['108'] = s108;
+    data['109'] = s109;
+    data['110'] = s110;
+    data['111'] = s111;
+    data['112'] = s112;
+    data['113'] = s113;
+    data['114'] = s114;
     return data;
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class QuranPageShowerState extends DzikrStateClass {
   // Data
-  List<QuranPageResultModel> pages = [];
+  List<QuranPage> pages = [];
   int activeQuranPageIndex = 0;
   bool isUsingPageMode = true;
   bool isShowToolbar = true;

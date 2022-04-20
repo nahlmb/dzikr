@@ -1,28 +1,28 @@
-class QuranPageModel {
+class QuranPageResponse {
   List<Verses>? verses;
   Pagination? pagination;
 
-  QuranPageModel({this.verses, this.pagination});
+  QuranPageResponse({this.verses, this.pagination});
 
-  QuranPageModel.fromJson(Map<String, dynamic> json) {
+  QuranPageResponse.fromJson(Map<String, dynamic> json) {
     if (json['verses'] != null) {
       verses = <Verses>[];
       json['verses'].forEach((v) {
-        verses!.add(new Verses.fromJson(v));
+        verses!.add(Verses.fromJson(v));
       });
     }
     pagination = json['pagination'] != null
-        ? new Pagination.fromJson(json['pagination'])
+        ? Pagination.fromJson(json['pagination'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.verses != null) {
-      data['verses'] = this.verses!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (verses != null) {
+      data['verses'] = verses!.map((v) => v.toJson()).toList();
     }
-    if (this.pagination != null) {
-      data['pagination'] = this.pagination!.toJson();
+    if (pagination != null) {
+      data['pagination'] = pagination!.toJson();
     }
     return data;
   }
@@ -37,7 +37,7 @@ class Verses {
   int? rubElHizbNumber;
   int? rukuNumber;
   int? manzilNumber;
-  Null? sajdahNumber;
+  Object? sajdahNumber;
   String? textUthmani;
   int? pageNumber;
   List<Words>? words;
@@ -73,35 +73,35 @@ class Verses {
     if (json['words'] != null) {
       words = <Words>[];
       json['words'].forEach((v) {
-        words!.add(new Words.fromJson(v));
+        words!.add(Words.fromJson(v));
       });
     }
     if (json['translations'] != null) {
       translations = <Translations>[];
       json['translations'].forEach((v) {
-        translations!.add(new Translations.fromJson(v));
+        translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['verse_number'] = this.verseNumber;
-    data['verse_key'] = this.verseKey;
-    data['juz_number'] = this.juzNumber;
-    data['hizb_number'] = this.hizbNumber;
-    data['rub_el_hizb_number'] = this.rubElHizbNumber;
-    data['ruku_number'] = this.rukuNumber;
-    data['manzil_number'] = this.manzilNumber;
-    data['sajdah_number'] = this.sajdahNumber;
-    data['text_uthmani'] = this.textUthmani;
-    data['page_number'] = this.pageNumber;
-    if (this.words != null) {
-      data['words'] = this.words!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['verse_number'] = verseNumber;
+    data['verse_key'] = verseKey;
+    data['juz_number'] = juzNumber;
+    data['hizb_number'] = hizbNumber;
+    data['rub_el_hizb_number'] = rubElHizbNumber;
+    data['ruku_number'] = rukuNumber;
+    data['manzil_number'] = manzilNumber;
+    data['sajdah_number'] = sajdahNumber;
+    data['text_uthmani'] = textUthmani;
+    data['page_number'] = pageNumber;
+    if (words != null) {
+      data['words'] = words!.map((v) => v.toJson()).toList();
     }
-    if (this.translations != null) {
-      data['translations'] = this.translations!.map((v) => v.toJson()).toList();
+    if (translations != null) {
+      data['translations'] = translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -141,28 +141,28 @@ class Words {
     lineNumber = json['line_number'];
     text = json['text'];
     translation = json['translation'] != null
-        ? new Translation.fromJson(json['translation'])
+        ? Translation.fromJson(json['translation'])
         : null;
     transliteration = json['transliteration'] != null
-        ? new Translation.fromJson(json['transliteration'])
+        ? Translation.fromJson(json['transliteration'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['position'] = this.position;
-    data['audio_url'] = this.audioUrl;
-    data['qpc_uthmani_hafs'] = this.qpcUthmaniHafs;
-    data['char_type_name'] = this.charTypeName;
-    data['page_number'] = this.pageNumber;
-    data['line_number'] = this.lineNumber;
-    data['text'] = this.text;
-    if (this.translation != null) {
-      data['translation'] = this.translation!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['position'] = position;
+    data['audio_url'] = audioUrl;
+    data['qpc_uthmani_hafs'] = qpcUthmaniHafs;
+    data['char_type_name'] = charTypeName;
+    data['page_number'] = pageNumber;
+    data['line_number'] = lineNumber;
+    data['text'] = text;
+    if (translation != null) {
+      data['translation'] = translation!.toJson();
     }
-    if (this.transliteration != null) {
-      data['transliteration'] = this.transliteration!.toJson();
+    if (transliteration != null) {
+      data['transliteration'] = transliteration!.toJson();
     }
     return data;
   }
@@ -182,10 +182,10 @@ class Translation {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['text'] = this.text;
-    data['language_name'] = this.languageName;
-    data['language_id'] = this.languageId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['text'] = text;
+    data['language_name'] = languageName;
+    data['language_id'] = languageId;
     return data;
   }
 }
@@ -204,10 +204,10 @@ class Translations {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['resource_id'] = this.resourceId;
-    data['text'] = this.text;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['resource_id'] = resourceId;
+    data['text'] = text;
     return data;
   }
 }
@@ -215,7 +215,7 @@ class Translations {
 class Pagination {
   int? perPage;
   int? currentPage;
-  Null? nextPage;
+  Object? nextPage;
   int? totalPages;
   int? totalRecords;
 
@@ -235,12 +235,12 @@ class Pagination {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['per_page'] = this.perPage;
-    data['current_page'] = this.currentPage;
-    data['next_page'] = this.nextPage;
-    data['total_pages'] = this.totalPages;
-    data['total_records'] = this.totalRecords;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['per_page'] = perPage;
+    data['current_page'] = currentPage;
+    data['next_page'] = nextPage;
+    data['total_pages'] = totalPages;
+    data['total_records'] = totalRecords;
     return data;
   }
 }

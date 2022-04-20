@@ -137,7 +137,7 @@ class QuranPageWidget extends StatelessWidget {
     required this.config,
   }) : super(key: key);
 
-  final QuranPageResultModel page;
+  final QuranPage page;
   final QuranPageShowerConfig config;
 
   @override

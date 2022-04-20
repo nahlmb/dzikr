@@ -1,21 +1,21 @@
-class QuranChapterModel {
+class QuranChapter {
   List<Chapters>? chapters;
 
-  QuranChapterModel({this.chapters});
+  QuranChapter({this.chapters});
 
-  QuranChapterModel.fromJson(Map<String, dynamic> json) {
+  QuranChapter.fromJson(Map<String, dynamic> json) {
     if (json['chapters'] != null) {
       chapters = <Chapters>[];
       json['chapters'].forEach((v) {
-        chapters!.add(new Chapters.fromJson(v));
+        chapters!.add(Chapters.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.chapters != null) {
-      data['chapters'] = this.chapters!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (chapters != null) {
+      data['chapters'] = chapters!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -56,23 +56,23 @@ class Chapters {
     versesCount = json['verses_count'];
     pages = json['pages'].cast<int>();
     translatedName = json['translated_name'] != null
-        ? new TranslatedName.fromJson(json['translated_name'])
+        ? TranslatedName.fromJson(json['translated_name'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['revelation_place'] = this.revelationPlace;
-    data['revelation_order'] = this.revelationOrder;
-    data['bismillah_pre'] = this.bismillahPre;
-    data['name_simple'] = this.nameSimple;
-    data['name_complex'] = this.nameComplex;
-    data['name_arabic'] = this.nameArabic;
-    data['verses_count'] = this.versesCount;
-    data['pages'] = this.pages;
-    if (this.translatedName != null) {
-      data['translated_name'] = this.translatedName!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['revelation_place'] = revelationPlace;
+    data['revelation_order'] = revelationOrder;
+    data['bismillah_pre'] = bismillahPre;
+    data['name_simple'] = nameSimple;
+    data['name_complex'] = nameComplex;
+    data['name_arabic'] = nameArabic;
+    data['verses_count'] = versesCount;
+    data['pages'] = pages;
+    if (translatedName != null) {
+      data['translated_name'] = translatedName!.toJson();
     }
     return data;
   }
@@ -90,9 +90,9 @@ class TranslatedName {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['language_name'] = this.languageName;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['language_name'] = languageName;
+    data['name'] = name;
     return data;
   }
 }

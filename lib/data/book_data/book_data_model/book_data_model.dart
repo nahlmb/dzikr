@@ -15,19 +15,19 @@ class Book {
     if (json['collection'] != null) {
       collection = <Collection>[];
       json['collection'].forEach((v) {
-        collection!.add(new Collection.fromJson(v));
+        collection!.add(Collection.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['title-id'] = this.titleId;
-    data['main-type'] = this.mainType;
-    data['lang'] = this.lang;
-    if (this.collection != null) {
-      data['collection'] = this.collection!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['title-id'] = titleId;
+    data['main-type'] = mainType;
+    data['lang'] = lang;
+    if (collection != null) {
+      data['collection'] = collection!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -46,17 +46,17 @@ class Collection {
     if (json['content'] != null) {
       content = <Content>[];
       json['content'].forEach((v) {
-        content!.add(new Content.fromJson(v));
+        content!.add(Content.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['title-id'] = this.titleId;
-    if (this.content != null) {
-      data['content'] = this.content!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['title-id'] = titleId;
+    if (content != null) {
+      data['content'] = content!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -82,13 +82,13 @@ class Content {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ar'] = this.ar;
-    data['en'] = this.en;
-    data['id'] = this.id;
-    data['count'] = this.count;
-    data['type'] = this.type;
-    data['notes'] = this.notes;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ar'] = ar;
+    data['en'] = en;
+    data['id'] = id;
+    data['count'] = count;
+    data['type'] = type;
+    data['notes'] = notes;
     return data;
   }
 }

@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class QuranDataProvider extends DzikrProviderClass {
   QuranDataProvider({required this.assetPath})
-      : super(networkConfig: DzikrNetworkConfig(baseUrl: '')) {}
+      : super(networkConfig: DzikrNetworkConfig(baseUrl: ''));
 
   final String assetPath;
   final String _lastOpenedPageIndexKey = "last-opened-quran-page-index";
@@ -26,29 +26,29 @@ class QuranDataProvider extends DzikrProviderClass {
     prefs.setInt(_lastOpenedPageIndexKey, page);
   }
 
-  Future<QuranChapterModel> getSurahList() async {
-    return QuranChapterModel.fromJson(await jsonDecode(
+  Future<QuranChapter> getSurahList() async {
+    return QuranChapter.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/chapters.json')));
   }
 
-  Future<QuranJuzsModel> getJuzList() async {
-    return QuranJuzsModel.fromJson(
+  Future<QuranJuzs> getJuzList() async {
+    return QuranJuzs.fromJson(
         await jsonDecode(await rootBundle.loadString('$assetPath/juzs.json')));
   }
 
-  Future<List<QuranPageModel>> getCompleteQuranAsset() async {
-    List<QuranPageModel> list = [];
+  Future<List<QuranPageResponse>> getCompleteQuranAsset() async {
+    List<QuranPageResponse> list = [];
 
     for (var i = 1; i <= 150; i++) {
-      list.add(QuranPageModel.fromJson(
+      list.add(QuranPageResponse.fromJson(
           await jsonDecode(await rootBundle.loadString('$assetPath/$i.json'))));
     }
     return list;
   }
 
-  Future<List<QuranPageResultModel>> getCompleteResultQuranData() async {
+  Future<List<QuranPage>> getCompleteResultQuranData() async {
     var pages = await getCompleteQuranAsset();
-    List<QuranPageResultModel> resultedPage = [];
+    List<QuranPage> resultedPage = [];
 
     for (var pageIndex = 0; pageIndex < pages.length; pageIndex++) {
       var page = pages[pageIndex];
@@ -150,7 +150,7 @@ class QuranDataProvider extends DzikrProviderClass {
         lines[lineIndex].fontSize = getLineFontSizes(lines[lineIndex].words);
       }
 
-      resultedPage.add(QuranPageResultModel(
+      resultedPage.add(QuranPage(
           lines: lines,
           pageNumber: pageNumber,
           verses: QuranVersesResultModel(verses: page.verses!)));

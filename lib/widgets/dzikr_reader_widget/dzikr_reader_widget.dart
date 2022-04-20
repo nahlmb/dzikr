@@ -15,7 +15,7 @@ class DzikrReaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final jsonBook = book.toJson();
+    //final jsonBook = book.toJson();
     return ChangeNotifierProvider<DzikrReaderState>(
       create: (context) =>
           DzikrReaderState(dataLength: book.collection!.length),

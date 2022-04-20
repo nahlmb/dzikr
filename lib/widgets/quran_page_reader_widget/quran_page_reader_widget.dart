@@ -10,6 +10,11 @@ import 'package:dzikr/widgets/quran_page_shower/quran_page_reader_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/// Widget that instanly process Quran data from QuranTool and show it to user
+///
+/// Use [QuranPageReaderConfig] for configuring style of Reader
+///
+/// [QuranPageReader] is part of Dzikr Package
 class QuranPageReader extends StatelessWidget {
   const QuranPageReader(
       {Key? key,

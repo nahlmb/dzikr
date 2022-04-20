@@ -11,12 +11,67 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Bismillah, Alhamdulillah, Washalatu Wasalam 'Ala Rasulillah.
+
+Praise to Allah.
+
+Dzikr design to be all-in and easy use package that collecting islamic useful feature for your Flutter App
+
+For now you can use Dzikr for :
+- Adding Quran Feature your app using [QuranTool]
+- Adding Dzikr and Du'a feature to your app using [BookTool]
+- Adding Prayer Time Schedule to your ap using [PrayerTimeTool]
+
+Dzikr currently still on beta version development.
+
+May Allah guide and help us always.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Big picture of package to getting started with it.
+
+### QuranTool
+Contain methods for getting Quran data.
+
+QuranTool Feature :
+- get all quran pages data
+- get list of juzs in Quran
+- get list of surah in Quran
+
+QuranTool using static assets of Quran data.
+You must preparing the data and save it into your project, on assets/quran folder.
+
+For fast way to processing the data, and render it and showing to user, Dzikr has provide you [QuranPageReader] widget, that will be inform below.
+
+#### QuranPageReader
+QuranPageReader will automaticly processing data from QuranTool and show/render it as interface to user.
+
+To use it :
+```dart
+class QuranPage extends StatelessWidget {
+  const QuranPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return QuranPageReader(config: QuranPageReaderConfig());
+  }
+}
+```
+
+Use [QuranPageReaderConfig] to make configuration on your QuranPageReader
+
+
+### PrayerTimeTool
+Contain methods for getting prayer time schedule.
+
+
+### BookTool
+Contain methods for (islamic) text (like du'a and adzkar).
+
+
+<!-- ## Features
+
+Adding Quran, Dzikr and Dua's and Prayer time to your Flutter App.
 
 ## Getting started
 
@@ -36,4 +91,4 @@ const like = 'sample';
 
 TODO: Tell users more about the package: where to find more information, how to 
 contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+from the package authors, and more. -->

@@ -13,7 +13,7 @@ import 'package:geocoding/geocoding.dart' as geocoding;
 ///
 /// Require : Device location permission.
 ///
-/// Return : PrayerTime, User's Lat and Long and Place name
+/// Return : [PrayerTime], that contains : prayer time, user's lat and long and place name
 ///
 /// Note : [PrayerTimeTool] may failed to find device location,
 /// so [PrayerTimeTool] is set default lat, long and place to **Jakarta, Indonesia**.
@@ -31,7 +31,7 @@ import 'package:geocoding/geocoding.dart' as geocoding;
 /// await PrayerTimeTool.init(defaultLat: '-6.175445728394261', defaultLong: '106.82706696674836', defaultPlaceName: 'Jakarta');
 /// ```
 ///
-/// PrayerTimeTool is part of Dzikr Package
+/// PrayerTimeTool is part of [Dzikr] Package
 class PrayerTimeTool {
   PrayerTimeTool._();
 

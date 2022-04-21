@@ -12,3 +12,7 @@ Some new update :
 * Cleaning class naming convention
 * Adding more inline documentation in the code
 * Remove some bug
+
+## 0.1.1
+
+* Remove fatal bug from previous version

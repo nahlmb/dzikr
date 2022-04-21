@@ -39,7 +39,7 @@ class QuranDataProvider extends DzikrProviderClass {
   Future<List<QuranPageResponse>> getCompleteQuranAsset() async {
     List<QuranPageResponse> list = [];
 
-    for (var i = 1; i <= 150; i++) {
+    for (var i = 1; i <= 604; i++) {
       list.add(QuranPageResponse.fromJson(
           await jsonDecode(await rootBundle.loadString('$assetPath/$i.json'))));
     }
@@ -137,6 +137,15 @@ class QuranDataProvider extends DzikrProviderClass {
         }
 
         //check stretch
+        if (pageNumber == 591) {
+          print("panjang : ${lines[lineIndex].words.length}");
+          print(lines[lineIndex]
+              .words
+              .map((e) => e.qpcUthmaniHafs)
+              .join()
+              .length);
+        }
+
         if (lines[lineIndex].words.map((e) => e.qpcUthmaniHafs).join().length <
                 55 &&
             lineIndex == (lines.length - 1)) {
@@ -162,11 +171,11 @@ class QuranDataProvider extends DzikrProviderClass {
     if (line.isEmpty) return 0.055;
     List<String?> temp = line.map((e) => e.qpcUthmaniHafs).toList();
     var join = temp.join();
-    if (join.length >= 90) return 0.049;
-    if (join.length >= 85) return 0.05;
-    if (join.length >= 80) return 0.05;
-    if (join.length >= 75) return 0.052;
-    if (join.length >= 70) return 0.053;
+    if (join.length >= 90) return 0.047;
+    if (join.length >= 85) return 0.0462;
+    if (join.length >= 80) return 0.0495;
+    if (join.length >= 75) return 0.05;
+    if (join.length >= 70) return 0.052;
     return 0.053;
   }
 }

@@ -3,7 +3,7 @@ import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
 import 'package:dzikr/tools/quran_tool/quran_tool.dart';
 import 'package:flutter/material.dart';
 
-class QuranPageShowerState extends DzikrStateClass {
+class QuranPageReaderState extends DzikrStateClass {
   // Data
   List<QuranPage> pages = [];
   int activeQuranPageIndex = 0;

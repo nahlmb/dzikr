@@ -6,7 +6,7 @@ import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page_reader_config.dart';
 import 'package:dzikr/tools/quran_tool/quran_tool.dart';
 import 'package:dzikr/widgets/minus_divider_widget/minus_divider_widget.dart';
-import 'package:dzikr/widgets/quran_page_shower/quran_page_reader_state.dart';
+import 'package:dzikr/widgets/quran_page_reader_widget/quran_page_reader_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,18 +30,18 @@ class QuranPageReader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<QuranPageShowerState>(
-        create: (context) => QuranPageShowerState(),
+    return ChangeNotifierProvider<QuranPageReaderState>(
+        create: (context) => QuranPageReaderState(),
         builder: (context, child) {
           // Start state
-          QuranPageShowerState state =
-              Provider.of<QuranPageShowerState>(context, listen: false);
+          QuranPageReaderState state =
+              Provider.of<QuranPageReaderState>(context, listen: false);
 
           // Setup
           state.init(context, initialPage: initialPage);
           state.getQuranPage();
 
-          return Consumer<QuranPageShowerState>(
+          return Consumer<QuranPageReaderState>(
               builder: (context, state, child) {
             return Scaffold(
               backgroundColor: config.backgroundColor,

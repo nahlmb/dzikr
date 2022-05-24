@@ -162,6 +162,7 @@ class QuranPageWidget extends StatelessWidget {
                       : 10),
                   itemBuilder: (context, index) => SizedBox(
                     width: double.infinity,
+                    // height: 40,
                     child: page.lines[index].words.isEmpty
                         ? page.lines[index].isSurahBegining
                             ? BeginingSurahCard(
@@ -169,15 +170,14 @@ class QuranPageWidget extends StatelessWidget {
                             : page.lines[index].isBasmallah
                                 ? BasmalahWord(
                                     config: config,
-                                    fontSize: DzikrSizeUtils
-                                        .adjustQuranTextSizeWithMediaQuery(
-                                            page.lines[index].fontSize,
-                                            context),
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.06,
                                   )
                                 : const SizedBox()
                         : QuranLineWidget(
                             words: page.lines[index].words.reversed.toList(),
-                            fontSize: page.lines[index].fontSize,
+                            fontSize: page.lines[index].wordSpacing,
                             stretch: page.lines[index].isUsingLineStretch,
                             color: config.onBackgroundColor,
                           ),
@@ -273,21 +273,32 @@ class BasmalahWord extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: SizeConfig.s2),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 0),
-        child: Center(
-          child: Text(
-            'بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ',
-            textDirection: TextDirection.rtl,
-            style: TextStyle(
-                color: config.onBackgroundColor,
-                fontSize: fontSize,
-                fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
-          ),
-        ),
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Text(
+        "بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ",
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.rtl,
+        style: TextStyle(
+            fontSize: MediaQuery.of(context).size.width * 0.06,
+            fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
       ),
     );
+    // return Padding(
+    //   padding: const EdgeInsets.symmetric(vertical: SizeConfig.s2),
+    //   child: Container(
+    //     padding: const EdgeInsets.symmetric(vertical: 0),
+    //     child: Center(
+    //       child: Text(
+    //         'بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ',
+    //         textDirection: TextDirection.rtl,
+    //         style: TextStyle(
+    //             color: config.onBackgroundColor,
+    //             fontSize: 24,
+    //             fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }
 
@@ -321,8 +332,7 @@ class BeginingSurahCard extends StatelessWidget {
                     : "",
                 style: TextStyle(
                     color: config.onSurfaceColor,
-                    fontSize: DzikrSizeUtils.adjustQuranTextSizeWithMediaQuery(
-                        line.fontSize, context),
+                    fontSize: MediaQuery.of(context).size.width * 0.06,
                     fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
               )),
             ),
@@ -347,21 +357,47 @@ class QuranLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment:
-          stretch ? MainAxisAlignment.spaceAround : MainAxisAlignment.center,
-      children: [
-        for (var wordIndex = 0; wordIndex < words.length; wordIndex++)
-          Text(
-            "${words[wordIndex].qpcUthmaniHafs}",
+    return stretch == false
+        ? Text(
+            words.map((e) => "${e.qpcUthmaniHafs} ").toList().reversed.join(),
             textDirection: TextDirection.rtl,
             style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.06,
                 color: color,
-                fontSize: DzikrSizeUtils.adjustQuranTextSizeWithMediaQuery(
-                    fontSize, context),
                 fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
+            textAlign: TextAlign.center,
           )
-      ],
-    );
+        : FittedBox(
+            child: Text(
+                words
+                    .map((e) => "${e.qpcUthmaniHafs} ")
+                    .toList()
+                    .reversed
+                    .join(),
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    letterSpacing: -0.2,
+                    wordSpacing: fontSize,
+                    color: color,
+                    fontFamily: 'KFGQPCHAFSUthmanicScriptRegular')),
+          );
+
+    // return Row(
+    //   // crossAxisAlignment: CrossAxisAlignment.center,
+    //   mainAxisAlignment:
+    //       stretch ? MainAxisAlignment.spaceAround : MainAxisAlignment.center,
+    //   children: [
+    //     for (var wordIndex = 0; wordIndex < words.length; wordIndex++)
+    //       Text(
+    //         "${words[wordIndex].qpcUthmaniHafs}",
+    //         textDirection: TextDirection.rtl,
+    //         style: TextStyle(
+    //             color: color,
+    //             fontSize: DzikrSizeUtils.adjustQuranTextSizeWithMediaQuery(
+    //                 fontSize, context),
+    //             fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
+    //       )
+    //   ],
+    // );
   }
 }

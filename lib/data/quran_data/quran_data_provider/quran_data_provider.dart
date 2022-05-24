@@ -156,7 +156,7 @@ class QuranDataProvider extends DzikrProviderClass {
         }
 
         // get font size
-        lines[lineIndex].fontSize = getLineFontSizes(lines[lineIndex].words);
+        lines[lineIndex].wordSpacing = getWordSpacing(lines[lineIndex].words);
       }
 
       resultedPage.add(QuranPage(
@@ -167,15 +167,24 @@ class QuranDataProvider extends DzikrProviderClass {
     return resultedPage;
   }
 
-  double getLineFontSizes(List<Words> line) {
+  double getWordSpacing(List<Words> line) {
     if (line.isEmpty) return 0.055;
     List<String?> temp = line.map((e) => e.qpcUthmaniHafs).toList();
     var join = temp.join();
-    if (join.length >= 90) return 0.047;
-    if (join.length >= 85) return 0.0462;
-    if (join.length >= 80) return 0.0495;
-    if (join.length >= 75) return 0.05;
-    if (join.length >= 70) return 0.052;
-    return 0.053;
+
+    if (join.length >= 80) return -1.5;
+    if (join.length >= 70) return -1.5;
+    if (join.length >= 65) return -1;
+    if (join.length >= 60) return 1;
+    if (join.length >= 50) return 3;
+    if (join.length >= 40) return 3;
+    return 12;
+
+    // if (join.length >= 90) return 0.047;
+    // if (join.length >= 85) return 0.0462;
+    // if (join.length >= 80) return 0.0495;
+    // if (join.length >= 75) return 0.05;
+    // if (join.length >= 70) return 0.052;
+    // return 0.053;
   }
 }

@@ -20,11 +20,11 @@ class QuranLineResultModel {
       this.isBasmallah = false,
       this.isSurahBegining = false,
       this.surahNum = 0,
-      this.fontSize = 0.054});
+      this.wordSpacing = 0.054});
   List<Words> words;
   bool isUsingLineStretch;
   bool isBasmallah;
   bool isSurahBegining;
   int surahNum;
-  double fontSize;
+  double wordSpacing;
 }

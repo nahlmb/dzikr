@@ -1,5 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dzikr/core/config/size_config.dart';
-import 'package:dzikr/core/utils/size_utils.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_chapter.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page_response.dart';
 import 'package:dzikr/data/quran_data/quran_data_model/quran_page.dart';
@@ -357,6 +357,28 @@ class QuranLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return AutoSizeText(
+    //   words.map((e) => "${e.qpcUthmaniHafs} ").toList().reversed.join(),
+    //   textDirection: TextDirection.rtl,
+    //   textAlign: TextAlign.center,
+    //   style: TextStyle(
+    //       fontSize: MediaQuery.of(context).size.width * 0.07,
+    //       color: color,
+    //       letterSpacing: -0.5,
+    //       wordSpacing: 0,
+    //       fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
+    //   maxLines: 1,
+    // );
+    // return Text(
+    //   words.map((e) => "${e.qpcUthmaniHafs} ").toList().reversed.join(),
+    //   textDirection: TextDirection.rtl,
+    //   style: TextStyle(
+    //       fontSize: MediaQuery.of(context).size.width * 0.06,
+    //       color: color,
+    //       fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
+    //   textAlign: TextAlign.justify,
+    // );
+
     return stretch == false
         ? Text(
             words.map((e) => "${e.qpcUthmaniHafs} ").toList().reversed.join(),
@@ -376,7 +398,7 @@ class QuranLineWidget extends StatelessWidget {
                     .join(),
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
-                    letterSpacing: -0.2,
+                    letterSpacing: 0,
                     wordSpacing: fontSize,
                     color: color,
                     fontFamily: 'KFGQPCHAFSUthmanicScriptRegular')),

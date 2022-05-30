@@ -95,21 +95,24 @@ class DzikrReaderWidget extends StatelessWidget {
                                   const SizedBox(
                                     height: SizeConfig.s24,
                                   ),
-                                  Text(
-                                    book.collection![collectionIndex]
-                                        .content![index].ar!,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        height: 1.8,
-                                        fontFamily: book
-                                                    .collection![
-                                                        collectionIndex]
-                                                    .content![index]
-                                                    .type ==
-                                                BookType.quran
-                                            ? 'KFGQPCHAFSUthmanicScriptRegular'
-                                            : null),
-                                    textDirection: TextDirection.rtl,
+                                  Container(
+                                    width: double.infinity,
+                                    child: Text(
+                                      book.collection![collectionIndex]
+                                          .content![index].ar!,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          height: 1.8,
+                                          fontFamily: book
+                                                      .collection![
+                                                          collectionIndex]
+                                                      .content![index]
+                                                      .type ==
+                                                  BookType.quran
+                                              ? 'KFGQPCHAFSUthmanicScriptRegular'
+                                              : null),
+                                      textDirection: TextDirection.rtl,
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: SizeConfig.s24,

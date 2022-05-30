@@ -76,68 +76,67 @@ class DzikrReaderWidget extends StatelessWidget {
                 right: SizeConfig.pagePaddingNum),
             Consumer<DzikrReaderState>(
                 builder: ((context, state, child) => Expanded(
-                        child: PageView(
+                        child: PageView.builder(
                       controller: state.pageController,
                       onPageChanged: (page) {
                         state.setCollectionIndex(page);
                       },
-                      children: [
-                        for (var collectionIndex = 0;
-                            collectionIndex < book.collection!.length;
-                            collectionIndex++)
+                      itemCount: book.collection!.length,
+                      itemBuilder: (context, collectionIndex) =>
                           ListView.builder(
-                            itemBuilder: (context, index) => Padding(
-                              padding: const EdgeInsets.all(
-                                  SizeConfig.pagePaddingNum),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                    height: SizeConfig.s24,
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    child: Text(
-                                      book.collection![collectionIndex]
-                                          .content![index].ar!,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          height: 1.8,
-                                          fontFamily: book
-                                                      .collection![
-                                                          collectionIndex]
-                                                      .content![index]
-                                                      .type ==
-                                                  BookType.quran
-                                              ? 'KFGQPCHAFSUthmanicScriptRegular'
-                                              : null),
-                                      textDirection: TextDirection.rtl,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: SizeConfig.s24,
-                                  ),
-                                  Text(
-                                    book.collection![collectionIndex]
-                                        .content![index].id!,
-                                    style: const TextStyle(fontSize: 14),
-                                  ),
-                                  const SizedBox(
-                                    height: SizeConfig.s32,
-                                  ),
-                                  const MinusDividerWidget(
+                        itemBuilder: (context, index) => Padding(
+                          padding:
+                              const EdgeInsets.all(SizeConfig.pagePaddingNum),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: SizeConfig.s24,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  book.collection![collectionIndex]
+                                      .content![index].ar!,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      height: 1.8,
+                                      fontFamily: book
+                                                  .collection![collectionIndex]
+                                                  .content![index]
+                                                  .type ==
+                                              BookType.quran
+                                          ? 'KFGQPCHAFSUthmanicScriptRegular'
+                                          : null),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: SizeConfig.s24,
+                              ),
+                              Text(
+                                book.collection![collectionIndex]
+                                    .content![index].id!,
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                              const SizedBox(
+                                height: SizeConfig.s32,
+                              ),
+                              (index ==
+                                      (book.collection![collectionIndex]
+                                              .content!.length -
+                                          1))
+                                  ? SizedBox()
+                                  : const MinusDividerWidget(
                                       left: SizeConfig.pagePaddingNum,
                                       right: SizeConfig.pagePaddingNum),
-                                ],
-                              ),
-                            ),
-                            itemCount: book
-                                .collection![state.currentCollectionIndex]
-                                .content!
-                                .length,
-                            shrinkWrap: true,
+                            ],
                           ),
-                      ],
+                        ),
+                        itemCount:
+                            book.collection![collectionIndex].content!.length,
+                        shrinkWrap: true,
+                      ),
                     )))),
           ],
         );
@@ -145,3 +144,56 @@ class DzikrReaderWidget extends StatelessWidget {
     );
   }
 }
+
+// ListView.builder(
+//                             itemBuilder: (context, index) => Padding(
+//                               padding: const EdgeInsets.all(
+//                                   SizeConfig.pagePaddingNum),
+//                               child: Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   const SizedBox(
+//                                     height: SizeConfig.s24,
+//                                   ),
+//                                   Container(
+//                                     width: double.infinity,
+//                                     child: Text(
+//                                       book.collection![collectionIndex]
+//                                           .content![index].ar!,
+//                                       style: TextStyle(
+//                                           fontSize: 20,
+//                                           height: 1.8,
+//                                           fontFamily: book
+//                                                       .collection![
+//                                                           collectionIndex]
+//                                                       .content![index]
+//                                                       .type ==
+//                                                   BookType.quran
+//                                               ? 'KFGQPCHAFSUthmanicScriptRegular'
+//                                               : null),
+//                                       textDirection: TextDirection.rtl,
+//                                     ),
+//                                   ),
+//                                   const SizedBox(
+//                                     height: SizeConfig.s24,
+//                                   ),
+//                                   Text(
+//                                     book.collection![collectionIndex]
+//                                         .content![index].id!,
+//                                     style: const TextStyle(fontSize: 14),
+//                                   ),
+//                                   const SizedBox(
+//                                     height: SizeConfig.s32,
+//                                   ),
+//                                   const MinusDividerWidget(
+//                                       left: SizeConfig.pagePaddingNum,
+//                                       right: SizeConfig.pagePaddingNum),
+//                                 ],
+//                               ),
+//                             ),
+//                             itemCount: book
+//                                 .collection![state.currentCollectionIndex]
+//                                 .content!
+//                                 .length,
+//                             shrinkWrap: true,
+//                           ),

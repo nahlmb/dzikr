@@ -13,19 +13,29 @@ class DzikrErrorConfig implements Exception {
   /// and automaticly handle exception by [ErrorConfig] standart response to exception
   static Future doTry(Function action) async {
     String errorTitle = "DzikrErrorConfig";
+    bool isError = false;
+    String errorCause = "";
+    String errorText = "";
     try {
       await action();
     } catch (e) {
+      isError = true;
+
       // Recognize Global Error exception
-      printOnDebug("$errorTitle : recognize global error : $e");
+      errorCause = "external error";
+      errorText = "$errorTitle -recognize global error- ${e.runtimeType} : $e";
+      printOnDebug(errorText);
 
       // Recognize DzikrErrorConfig exception
       if (e.runtimeType == DzikrErrorConfig) {
         var error = e as DzikrErrorConfig;
-        printOnDebug(
-            "$errorTitle : error! : error cause = ${error.cause}. : error message = ${error.message}");
+        errorCause = error.cause;
+        errorText =
+            "$errorTitle, cause = ${error.cause}, error message = ${error.message}";
+        printOnDebug(errorText);
       }
     }
+    if (isError) throw DzikrErrorConfig(errorCause, errorText);
   }
 }
 

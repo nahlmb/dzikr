@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 /// Render and show data from [Book] instantly using [DzikrReaderWidget]
 ///
 /// [DzikrReaderWidget] is part of Dzikr Package
-class DzikrReaderWidget extends StatelessWidget {
-  const DzikrReaderWidget({Key? key, required this.book}) : super(key: key);
+class DzikrReader extends StatelessWidget {
+  const DzikrReader({Key? key, required this.book}) : super(key: key);
 
   final Book book;
 

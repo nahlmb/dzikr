@@ -32,7 +32,7 @@ the following is a list of Dzikr main tools :
 - [Book Tool (used for adzkar)][3]
 
 ## Current Version Information
-> **Warning**
+> **Warning**  
 > Dzikr is currently on beta version. Some features are still on best practice research and may feel buggy, major changes may happen in future version releases.
 
 ## Installation
@@ -43,7 +43,7 @@ Install using pub
 flutter pub add dzikr
 ```
 
-> **Note**
+> **Note**  
 > There is requirement things todo in every specific tools in Dzikr, you can read it in each tool section
 
 Quick hint : Prayer Tools will require you to adding location premission on both Android Manifest and iOS info.plist as the tool contain geolocator, Quran tool wil required you static quran .json file, also with Book tool.
@@ -68,19 +68,19 @@ after that all done Insyaallah, the tool is ready for use.
 
 1. Init the Tool
 ```dart
-  QuranTool quranTool = QuranTool.init();
+QuranTool quranTool = QuranTool.init();
 ```
 2. Get the prayer time
 ```dart
-  getPrayerTime() async {
-    try {
-        PrayerTimeTool prayerTimeTool = await PrayerTimeTool.init();
-        PrayerTime prayer = prayerTimeTool.prayer;
-      } on DzikrErrorConfig catch (error) {
-        // error
-        print(error.message);
-      }
-  }
+getPrayerTime() async {
+  try {
+      PrayerTimeTool prayerTimeTool = await PrayerTimeTool.init();
+      PrayerTime prayer = prayerTimeTool.prayer;
+    } on DzikrErrorConfig catch (error) {
+      // error
+      print(error.message);
+    }
+}
 ```
 3. Show the data to your user
 ```dart
@@ -116,8 +116,8 @@ Quran Tool is using static Quran data, you need to downloaded the data first, pu
 2) Put quran directory on ./assets folder of your project
 3) register the asset in pubspec.yaml, as below
 ```dart
-  assets:
-    - assets/quran/
+assets:
+  - assets/quran/
 ```
 
 then the tool is ready to use insyaallah.
@@ -173,8 +173,8 @@ Same with Quran Tool, you need to download the Book data first, as this followin
 2) Put quran directory on ./assets folder of your project
 3) register the asset in pubspec.yaml, as below
 ```dart
-  assets:
-    - assets/book/
+assets:
+  - assets/book/
 ```
 
 ## Usage

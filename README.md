@@ -115,7 +115,7 @@ Quran Tool is using static Quran data, you need to downloaded the data first, pu
 1) You can download the tool hare : (its not provided yet)
 2) Put quran directory on ./assets folder of your project
 3) register the asset in pubspec.yaml, as below
-```dart
+```yaml
 assets:
   - assets/quran/
 ```
@@ -172,7 +172,7 @@ Same with Quran Tool, you need to download the Book data first, as this followin
 1) You can download the tool hare : (its not provided yet)
 2) Put quran directory on ./assets folder of your project
 3) register the asset in pubspec.yaml, as below
-```dart
+```yaml
 assets:
   - assets/book/
 ```

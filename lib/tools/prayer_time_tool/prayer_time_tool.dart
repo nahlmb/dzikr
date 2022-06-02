@@ -101,8 +101,12 @@ class PrayerTimeTool {
         await _prayerTimeDataProvider.getMonthlyPrayerTime(_lat, _long);
     var todaySchedule = _prayerTimeDataProvider.getTodayPrayerTime(
         monthlySchedule: monthlySchedule);
-    var detailedSchedule =
-        _prayerTimeDataProvider.findClosestPrayerTime(todaySchedule);
+    var tomorrowSchedule = _prayerTimeDataProvider.getTomorrowPrayerTime(
+        monthlySchedule: monthlySchedule);
+
+    var detailedSchedule = _prayerTimeDataProvider.findClosestPrayerTime(
+        todaySchedule, tomorrowSchedule);
+
     prayer = PrayerTime(
         monthlySchedule: monthlySchedule,
         todaySchedule: detailedSchedule,
@@ -117,7 +121,11 @@ class PrayerTimeTool {
     DzikrErrorConfig.doTry(() {
       var todaySchedule =
           provider.getTodayPrayerTime(monthlySchedule: prayer.monthlySchedule);
-      var detailedSchedule = provider.findClosestPrayerTime(todaySchedule);
+
+      var tomorrowSchedule = provider.getTomorrowPrayerTime(
+          monthlySchedule: prayer.monthlySchedule);
+      var detailedSchedule =
+          provider.findClosestPrayerTime(todaySchedule, tomorrowSchedule);
 
       prayer = PrayerTime(
           monthlySchedule: prayer.monthlySchedule,

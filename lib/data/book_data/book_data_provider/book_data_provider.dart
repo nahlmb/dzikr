@@ -30,7 +30,7 @@ class BookDataProvider extends DzikrProviderClass {
     var quranDua = Book.fromJson(await jsonDecode(
         await rootBundle.loadString('$assetPath/quran-dua.json')));
     var dailyDua = Book.fromJson(await jsonDecode(
-        await rootBundle.loadString('$assetPath/daily-dua.json')));
+        await rootBundle.loadString('$assetPath/prophet-dua.json')));
 
     return [quranDua, dailyDua];
   }

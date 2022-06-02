@@ -137,14 +137,6 @@ class QuranDataProvider extends DzikrProviderClass {
         }
 
         //check stretch
-        if (pageNumber == 591) {
-          print("panjang : ${lines[lineIndex].words.length}");
-          print(lines[lineIndex]
-              .words
-              .map((e) => e.qpcUthmaniHafs)
-              .join()
-              .length);
-        }
 
         if (lines[lineIndex].words.map((e) => e.qpcUthmaniHafs).join().length <
                 55 &&
@@ -152,6 +144,9 @@ class QuranDataProvider extends DzikrProviderClass {
           lines[lineIndex].isUsingLineStretch = false;
         }
         if (pageNumber == 1 || pageNumber == 2) {
+          lines[lineIndex].isUsingLineStretch = false;
+        }
+        if (pageNumber >= 600) {
           lines[lineIndex].isUsingLineStretch = false;
         }
 

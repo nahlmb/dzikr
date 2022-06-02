@@ -35,13 +35,28 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
     return todayData;
   }
 
-  DailyPrayer findClosestPrayerTime(Data todayData) {
+  Data getTomorrowPrayerTime({required MonthlyPrayer monthlySchedule}) {
+    var date = DateTime.now();
+    date.add(const Duration(days: 1));
+    String nowDate = DateFormat('dd-MM-yyyy').format(date);
+    if (monthlySchedule.data == null) {
+      throw DzikrErrorConfig(
+          DzikrErrorConfig.causeNull, "Monthly schedule data is null");
+    }
+    var todayData = monthlySchedule.data!
+        .firstWhere((element) => element.date!.gregorian!.date == nowDate);
+
+    return todayData;
+  }
+
+  DailyPrayer findClosestPrayerTime(Data todayData, Data tomorrow) {
     // Find closest prayer time
     var date = DateTime.now();
     var format = DateFormat("HH:mm");
     var currentTime =
         format.parse(format.format(date)).millisecondsSinceEpoch.abs();
     var todayTimings = todayData.timings!;
+    var tomorrowTimings = tomorrow.timings!;
 
     //change all prayer time to milliseconds
     // int fajr = format
@@ -68,21 +83,22 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
     String closestPrayer = "";
     String closestPrayerTime = "0:00 (---)";
 
-    if (dhuhr > currentTime) {
+    if (dhuhr >= currentTime) {
       closestPrayer = "Dzuhur";
       closestPrayerTime = todayTimings.dhuhr!;
-    } else if (dhuhr < currentTime && asr > currentTime) {
+    } else if (dhuhr <= currentTime && asr >= currentTime) {
       closestPrayer = "Ashar";
       closestPrayerTime = todayTimings.asr!;
-    } else if (asr < currentTime && maghrib > currentTime) {
+    } else if (asr <= currentTime && maghrib >= currentTime) {
       closestPrayer = "Maghrib";
       closestPrayerTime = todayTimings.maghrib!;
-    } else if (maghrib < currentTime && isya > currentTime) {
+    } else if (maghrib <= currentTime && isya >= currentTime) {
       closestPrayer = "Isya";
       closestPrayerTime = todayTimings.isha!;
-    } else if (isya < currentTime) {
+    } else if (isya <= currentTime) {
       closestPrayer = "Subuh";
-      closestPrayerTime = todayTimings.fajr!;
+      date = date.add(const Duration(days: 1));
+      closestPrayerTime = tomorrowTimings.fajr!;
     }
 
     var closestDate = format.parse(closestPrayerTime.substring(0, 5));
@@ -95,8 +111,12 @@ class PrayerTimeDataProvider extends DzikrProviderClass {
       closestDate.minute,
     );
 
+    var now = DateTime.now();
+
     var closestDateDiffrance = closestDateExac.difference(
-        DateTime.utc(date.year, date.month, date.day, date.hour, date.minute));
+        DateTime.utc(now.year, now.month, now.day, now.hour, now.minute));
+
+    print(closestDateDiffrance.toString());
 
     return DailyPrayer(
         fajr: todayTimings.fajr!,

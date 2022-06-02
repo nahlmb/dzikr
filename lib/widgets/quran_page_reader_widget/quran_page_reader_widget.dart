@@ -207,10 +207,8 @@ class QuranPageWidget extends StatelessWidget {
                             height: SizeConfig.s6,
                           ),
                           Text(
-                            page.verses.verses![index].words!
-                                .map((e) => "${e.transliteration!.text ?? ''} ")
-                                .toList()
-                                .join(),
+                            removeAllHtmlTags(page
+                                .verses.verses![index].translations![0].text!),
                             textAlign: TextAlign.end,
                             style: TextStyle(
                                 color:
@@ -380,14 +378,15 @@ class QuranLineWidget extends StatelessWidget {
     // );
 
     return stretch == false
-        ? Text(
+        ? AutoSizeText(
             words.map((e) => "${e.qpcUthmaniHafs} ").toList().reversed.join(),
             textDirection: TextDirection.rtl,
             style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.06,
                 color: color,
+                fontSize: MediaQuery.of(context).size.width * 0.055,
                 fontFamily: 'KFGQPCHAFSUthmanicScriptRegular'),
             textAlign: TextAlign.center,
+            maxLines: 1,
           )
         : FittedBox(
             child: Text(
@@ -422,4 +421,11 @@ class QuranLineWidget extends StatelessWidget {
     //   ],
     // );
   }
+}
+
+String removeAllHtmlTags(String htmlText) {
+  return htmlText.replaceAll(
+      RegExp(r"<([^>]+?)([^>]*?)>(.*?)<\/\1>",
+          caseSensitive: false, multiLine: true),
+      "");
 }

@@ -124,7 +124,7 @@ And the cool part Quran Tool provide instant Quran render widget, we will show t
 ### Requirement
 Quran Tool is using static Quran data, you need to downloaded the data first, put it into assets/quran directory, register the asset path into pubspec.yaml the you'll be able to use the tool insyaallah.
 
-1. You can download the tool hare : [this link](https://dzikr-docs.vercel.app/zip/quran.zip)
+1. You can the data hare, the extract it : [this link](https://dzikr-docs.vercel.app/zip/quran.zip)
 2. Put quran directory on ./assets folder of your project
 3. register the asset in pubspec.yaml, as below
 ```yaml
@@ -181,7 +181,7 @@ Book tool actually is tool for showing adzkar and du'a, we named it book because
 Same with Quran Tool, you need to download the Book data first, as this following.
 
 ### Requirement
-1. You can download the tool hare : [this link](https://dzikr-docs.vercel.app/zip/books.zip)
+1. You can the data hare, the extract it : [this link](https://dzikr-docs.vercel.app/zip/books.zip)
 2. Put quran directory on ./assets folder of your project
 3. register the asset in pubspec.yaml, as below
 ```yaml
